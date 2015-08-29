@@ -6,6 +6,12 @@
 # Add your custom excludes below
 # ------------------------------------------------------------------------------
 
+handler
+handler/*
+
+example*
+*.sh
+test.*
 
 # =============== log ignore
 node_modules
