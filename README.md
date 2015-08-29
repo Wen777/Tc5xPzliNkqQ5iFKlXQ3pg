@@ -1,14 +1,7 @@
-# Want to join us?
+# Join aftership
 
-We always looking for talent.
+## Run
+npm install
+node producer.js
+node consumer.js
 
-
-We think that having a challenge to:
-
-- test your coding skill
-- know how do you think
-- how to solve a problem
-
-is always interseted in our team.
-
-There are different challenges, you can switch the branch and try it even you are not going to join us.

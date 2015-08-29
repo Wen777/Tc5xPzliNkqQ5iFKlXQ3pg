@@ -1,0 +1,16 @@
+
+{
+  "name": "challenge",
+  "version": "0.0.1",
+  "description": "challenge",
+  "main": "consumer.js",
+  "author": "wen777",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "mongodb": "^2.0.42",
+    "request": "^2.51.0",
+    "fivebeans": "^1.3.1"
+  }
+
+}
