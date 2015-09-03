@@ -1,7 +1,3 @@
-# Join aftership
+# Aftership challenge
 
-## Run
-npm install
-node producer.js
-node consumer.js
-
+Include two folder. One is nodejs crawler and the other is db design.
