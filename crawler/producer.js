@@ -5,7 +5,7 @@ var port = 11300;
 var tube = 'wen777';
 
 // Define 10 task
-var taskList = [
+var task_list = [
   // {type: 'rate', payload:{"from": "HKD", "to": "USD" }},
   // {type: 'rate', payload:{"from": "HKD", "to": "USD" }},
   // {type: 'rate', payload:{"from": "HKD", "to": "USD" }},
@@ -25,17 +25,17 @@ var doneEmittingJobs = function(){
 	};
 
 var continuer = function(err, jobid){
-		if (taskList.length === 0)
+		if (task_list.length === 0)
 				return doneEmittingJobs();
 		console.log('emitted job id: ' + jobid);
-		emitter.put(0, 0, 60, JSON.stringify([tube, taskList.shift()]), continuer);
+		emitter.put(0, 0, 60, JSON.stringify([tube, task_list.shift()]), continuer);
 	};
 
 var emitter = new fivebeans.client(host, port);
 emitter.on('connect', function(){
 	emitter.use(tube, function(err, tname){
 		console.log("using " + tname);
-		emitter.put(0, 0, 60, JSON.stringify([tube, taskList.shift()]), continuer);
+		emitter.put(0, 0, 60, JSON.stringify([tube, task_list.shift()]), continuer);
 	});
 });
 
@@ -46,7 +46,7 @@ emitter.connect()
 // 		{
 // 				// client can now be used
 // 				emitter.use(tube, function(err, tname){
-// 					emitter.put(0, 0, 60, JSON.stringify([tube, taskList.shift()]), continuer);
+// 					emitter.put(0, 0, 60, JSON.stringify([tube, task_list.shift()]), continuer);
 // 				});
 // 		})
 // 		.on('error', function(err)

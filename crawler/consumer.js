@@ -92,7 +92,7 @@ function conWorker() {
                 // parse data and insert data to mongodb
                 getPCurrency(data[1]["payload"], function(err, res) {
 
-                    if (!err && success_times < 10) {
+                    if (!err && success_times + 1 < 10) {
                         success_times++;
                         client.use(tubes, function(err, tubename) {
                             client.put(0, 0, 60, JSON.stringify(data), function(err, jobid) {
@@ -104,9 +104,11 @@ function conWorker() {
                                 }
                             });
                         });
-                        setTimeout(function() {
+                        if ( success_times < 10  ){
+                         setTimeout(function() {
                             conWorker();
-                        }, 1000 * 60)
+                          }, 1000 * 60);                       
+                        }
                     } else if (err && error_times < 3 ) {
                         error_times++;
                         setTimeout(function() {
@@ -117,6 +119,8 @@ function conWorker() {
                             });
                         }, 1000 * 3)
                     } else {
+                        success_times++;
+                        console.log("success_times " + success_times  );
                         process.exit(0);
                     }
                 });
